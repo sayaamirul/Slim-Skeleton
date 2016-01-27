@@ -10,8 +10,12 @@ class HomeController extends BaseController
 
     public function index(Request $request, Response $response, $args)
     {
-        return $this->view->render($response, 'home.twig', [
-            'name' => $args['name'],
-        ]);
+        if(isset($args['name'])){
+            return $this->view->render($response, 'home.twig', [
+                'name' => $args['name'],
+            ]);
+        }
+
+        return $this->view->render($response, 'home.twig');
     }
 }
