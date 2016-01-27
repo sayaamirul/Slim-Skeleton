@@ -9,8 +9,6 @@ abstract class BaseController
 
     private $container = null;
 
-    private $view;
-
     public function __construct(Container $container = null)
     {
         if (null !== $container) {
@@ -18,6 +16,7 @@ abstract class BaseController
         }
 
         $view = $this->container->get('view');
+        $logger = $this->container->get('logger');
     }
 
     public function __get($var)
