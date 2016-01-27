@@ -10,7 +10,11 @@ class HomeController extends BaseController
 
     public function index(Request $request, Response $response, $args)
     {
+
         $this->logger->info("Open Homepage");
+
+        $users = $this->db->query("SELECT * FROM users")
+            ->fetchAll(\PDO::FETCH_OBJ);
 
         if(isset($args['name'])){
             return $this->view->render($response, 'home.twig', [
@@ -18,6 +22,8 @@ class HomeController extends BaseController
             ]);
         }
 
-        return $this->view->render($response, 'home.twig');
+        return $this->view->render($response, 'home.twig', [
+            'users' => $users,
+        ]);
     }
 }

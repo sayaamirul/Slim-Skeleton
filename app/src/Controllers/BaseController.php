@@ -15,8 +15,9 @@ abstract class BaseController
             $this->container = $container;
         }
 
-        $view = $this->container->get('view');
+        $view   = $this->container->get('view');
         $logger = $this->container->get('logger');
+        $db     = $this->container->get('db');
     }
 
     public function __get($var)

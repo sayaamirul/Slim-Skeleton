@@ -11,7 +11,7 @@ return [
     'db' => [
         'driver'    => 'mysql',
         'host'      => 'localhost',
-        'name'      => 'DBNAME',
+        'dbname'    => 'testing',
         'user'      => 'root',
         'password'  => '',
         'charset'   => 'utf8',

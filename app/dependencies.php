@@ -2,14 +2,13 @@
 
 use Slim\Container;
 
-
-$container['view'] = function (Container $c) use ($settings) {
+$container['view'] = function(Container $c) use ($settings) {
     $settings = $c->get('settings');
     $view = new \Slim\Views\Twig(
         $settings['view']['template_path'],
         $settings['view']['twig']
     );
-    // Add extensions
+
     $view->addExtension(new Slim\Views\TwigExtension(
         $c->get('router'),
         $c->get('request')->getUri())
@@ -19,7 +18,16 @@ $container['view'] = function (Container $c) use ($settings) {
     return $view;
 };
 
-$container['logger'] = function (Container $c) use ($settings) {
+$container['db'] = function(Container $c) use ($settings) {
+    return new PDO(''.$settings['db']['driver'].':
+        host='.$settings['db']['host'].';
+        dbname='.$settings['db']['dbname'],
+        $settings['db']['user'],
+        $settings['password']
+    );
+};
+
+$container['logger'] = function(Container $c) use ($settings) {
     $settings = $c->get('settings');
     $logger = new \Monolog\Logger($settings['logger']['name']);
     $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
@@ -28,4 +36,8 @@ $container['logger'] = function (Container $c) use ($settings) {
             \Monolog\Logger::DEBUG)
     );
     return $logger;
+};
+
+$container['flash'] = function(Container $c) {
+    return new Slim\Flash\Messages;
 };

@@ -17,6 +17,7 @@
         "slim/slim": "^3.1",
         "slim/twig-view": "^2.0",
         "vlucas/valitron": "^1.2",
-        "monolog/monolog": "^1.17"
+        "monolog/monolog": "^1.17",
+        "slim/flash": "^0.1.0"
     }
 }
