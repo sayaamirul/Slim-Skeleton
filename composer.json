@@ -1,0 +1,22 @@
+{
+    "authors": [
+        {
+            "name": "Muhammad Amirul Ihsan",
+            "email": "muh.amirul.ihsan@gmail.com",
+            "homepage": "http://github.com/maicode"
+        }
+    ],
+
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : "app/src"
+        }
+    },
+
+    "require": {
+        "slim/slim": "^3.1",
+        "slim/twig-view": "^2.0",
+        "vlucas/valitron": "^1.2",
+        "monolog/monolog": "^1.17"
+    }
+}
